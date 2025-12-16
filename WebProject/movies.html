@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<head>
+  <title>Movies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #141414;
+      color: white;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e50914;
+      padding: 15px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: white;
+    }
+    a {
+    text-decoration: none; 
+    color: inherit;
+    }
+    .movie-container {
+      padding: 20px;
+      text-align: center;
+    }
+    .movie img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    @media (max-width: 768px) {
+      header a {
+        font-size: 1rem;
+      }
+      .movie-container h1 {
+        font-size: 1.5rem;
+      }
+      .description {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 15px;
+      }
+      header a {
+        font-size: 0.9rem;
+      }
+      .movie-container h1 {
+        font-size: 1.2rem;
+      }
+      .description {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Netflix</h1>
+        <header>
+        <a href="main.html">Go Back</a>
+        </header>
+      </header>
+    <div class="movie-container">
+        <h1 id="movieTitle"></h1>
+        <video id="movieVideo" controls>
+          <source id="movieSource" type="video/mp4">
+        </video>
+        <div class="description" id="movieDescription"></div>
+    </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieName = urlParams.get('movie');
+
+    const moviesData = {
+        bigmouth: {
+            title: 'Big Mouth',
+            description: 'A show about the joys and struggles of adolescence.',
+            video : "video.mp4"
+        },
+        whyher: {
+            title: 'Why Her',
+            description: 'A love story with professional challenges.',
+            video : "video.mp4"
+        },
+        truebeauty: {
+            title: "True Beauty",
+            description: "A high school student who is deemed ugly discovers makeup and becomes a beauty goddess, but hides her true self from everyone around her.",
+            video : "video.mp4"
+        },
+        cuteprogrammer: {
+            title: "Cute Programmer",
+            description: "A story about a brilliant but socially awkward programmer who navigates through love and tech struggles.",
+            video : "video.mp4"
+        },
+        pyhoms: {
+            title: "Put Your Head On My Shoulders",
+            description: "A romantic comedy about a college student who unexpectedly finds love while dealing with her new roommate.",
+            video : "video.mp4"
+        },
+        vincenzo: {
+            title: "Vincenzo",
+            description: "A lawyer from Italy returns to Korea and gets involved in a battle with a conglomerate while seeking revenge.",
+            video : "video.mp4"
+        },
+        goahead: {
+            title: "Go Ahead",
+            description: "A heartwarming family drama about three siblings who find strength in their bond despite the hardships they face.",
+            video : "video.mp4"
+        },
+        fallingintoyoursmile: {
+            title: "Falling Into Your Smile",
+            description: "A popular gamer and an eSports competitor find their lives intertwined as they start falling in love amidst their careers.",
+            video : "video.mp4"
+        },
+        dofsuns: {
+            title: "Descendants Of The Sun",
+            description: "A soldier and a doctor find love in a war-torn country, navigating their relationship against the backdrop of danger and duty.",
+            video : "video.mp4"
+        },
+        businessproposal: {
+            title: "Business Proposal",
+            description: "A woman disguises herself as her friend to go on a blind date with her boss, leading to unexpected twists in their professional and personal lives.",
+            video : "video.mp4"
+        },
+        queenoftears: {
+            title: "Queen Of Tears",
+            description: "A political drama centered around a woman navigating the complexities of power, influence, and her personal journey.",
+            video : "video.mp4"
+        },
+        venom: {
+            title: "Venom",
+            description: "A journalist gains superpowers when he merges with an alien symbiote, becoming the antihero Venom as he battles other symbiotes.",
+            video : "video.mp4"
+        },
+        wonderwoman: {
+            title: "Wonder Woman",
+            description: "An Amazonian princess embarks on a journey to save the world and uncover her true origins.",
+            video : "video.mp4"
+        },
+        fastnfurious: {
+            title: "Fast and Furious",
+            description: "A group of street racers and thieves become unlikely allies in an international crime-fighting operation.",
+            video : "video.mp4"
+                },
+        despicable_me: {
+            title: "Despicable Me",
+            description: "A supervillain adopts three girls and embarks on a mission to steal the moon while building a relationship with his new family.",
+            video : "video.mp4"
+        },
+        minnions: {
+            title: "The Minions",
+            description: "A hilarious adventure featuring the Minions, small yellow creatures who serve the most villainous masters.",
+            video : "video.mp4"
+        },
+        bahadur: {
+            title: "3 Bahadur",
+            description: "A group of young heroes with special powers must save their city from an evil villain.",
+            video : "video.mp4"
+                },
+        frozen: {
+            title: "Frozen",
+            description: "A fearless princess sets out on a journey to find her estranged sister, whose icy powers have trapped their kingdom in eternal winter.",
+            video : "video.mp4"
+        },
+        tinkerbell: {
+            title: "Tinkerbell",
+            description: "A delightful tale of the famous fairy Tinkerbell and her adventures in Pixie Hollow.",
+            video : "video.mp4"
+        },
+        madagascar: {
+            title: "Madagascar",
+            description: "A group of zoo animals find themselves stranded on the island of Madagascar, and must learn to survive in the wild.",
+            video : "video.mp4"
+        },
+        kungfupanda: {
+            title: "Kung Fu Panda",
+            description: "A lazy, overweight panda must learn kung fu to protect his village and live up to his destiny as the Dragon Warrior.",
+            video : "video.mp4"
+        },
+        babydriver: {
+            title: "Baby Driver",
+            description: "A young getaway driver with a love for music tries to escape his life of crime, but he finds himself trapped in a heist gone wrong.",
+            video : "video.mp4"
+        },
+        motupatlu: {
+            title: "Motu Patlu",
+            description: "Two best friends embark on comical adventures while dealing with quirky situations in their town.",
+            video : "video.mp4"
+        },
+        adamproject: {
+            title: "The Adam Project",
+            description: "A time-traveling pilot teams up with his younger self and his late father to come to terms with his past and save the future.",
+            video : "video.mp4"
+        },
+        heartofstone: {
+            title: "Heart of Stone",
+            description: "An action-packed thriller about a secret agent who will stop at nothing to protect a powerful organization from falling into the wrong hands.",
+            video : "video.mp4"
+        },
+        darkknight: {
+            title: "The Dark Knight",
+            description: "Batman faces his greatest challenge as he must battle the Joker, a criminal mastermind who wants to bring Gotham City to its knees.",
+            video : "video.mp4"
+        },
+        joker: {
+            title: "Joker",
+            description: "A troubled comedian embarks on a downward spiral of mental illness and societal rejection, eventually becoming the infamous criminal known as the Joker.",
+            video : "video.mp4"
+        },
+        mazerunner: {
+            title: "The Maze Runner",
+            description: "A young man wakes up in a mysterious maze with no memory of his past and must navigate his way out with the help of other trapped teenagers.",
+            video : "video.mp4"
+        },
+        teenwolf: {
+            title: "Teen Wolf",
+            description: "A teenager gains supernatural powers after being bitten by a werewolf, complicating his high school life and relationships.",
+            video : "video.mp4"
+        },
+        thehundred: {
+            title: "The Hundred",
+            description: "A group of survivors from a post-apocalyptic Earth is sent back to the planet to determine if it's habitable again.",
+            video : "video.mp4"
+        },
+        flash: {
+            title: "The Flash",
+            description: "A crime scene investigator gains super speed after a freak accident, becoming the fastest man alive and fighting crime in Central City.",
+            video : "video.mp4"
+        },
+        inception: {
+            title: "Inception",
+            description: "A skilled thief enters the subconscious minds of targets to steal secrets, but he is given an impossible task to implant an idea instead.",
+            video : "video.mp4"
+        },
+        matrix: {
+            title: "The Matrix",
+            description: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+            video : "video.mp4"
+        },
+        interstellar: {
+            title: "Interstellar",
+            description: "A team of astronauts travels through a wormhole in space to find a new home for humanity, while dealing with the complexity of time and relativity.",
+            video : "video.mp4"
+        },
+        avengers: {
+            title: "Avengers: Endgame",
+            description: "The Avengers unite once more to undo the damage caused by Thanos, confronting their biggest challenges to save the universe.",
+            video : "video.mp4"
+        }
+    };
+    // Get movie data based on the movie name from URL
+    const movie = moviesData[movieName];
+    
+    if (movie) {
+      document.getElementById('movieTitle').innerText = movie.title;
+      document.getElementById('movieSource').src = movie.video; 
+      document.getElementById('movieDescription').innerText = movie.description;
+      document.getElementById('movieVideo').load(); 
+    } else {
+      document.getElementById('movieTitle').innerText = "Movie not found";
+      document.getElementById('movieDescription').innerText = "Sorry, we couldn't find this movie.";
+    }
+  </script>
+
+</body>
+</html>

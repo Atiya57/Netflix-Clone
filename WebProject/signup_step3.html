@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        header img {
+            height: 40px;
+        }
+
+        header a {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        main p {
+            color: #999;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plans {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .plan {
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: left;
+            transition: border-color 0.3s;
+        }
+
+        .plan:hover,
+        .plan.selected {
+            border-color: #e50914;
+        }
+
+        .plan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .plan-header h2 {
+            font-size: 18px;
+            margin: 0;
+            color: #333;
+        }
+
+        .most-popular {
+            background-color: #e50914;
+            color: #fff;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .plan ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .plan ul li {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .next-button {
+            background-color: #e50914;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        footer {
+            font-size: 12px;
+            color: #666;
+            margin-top: 30px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png">
+        <a href="index.html">Sign Out</a>
+    </header>
+
+    <main>
+        <p>Step 2 of 3</p>
+        <h1>Choose the plan that's right for you</h1>
+        <div class="plans">
+            <div class="plan" onclick="selectPlan(this, 'Mobile', 250)">
+                <div class="plan-header">
+                    <h2>Mobile<br><span style="font-size: 12px;">480p</span></h2>
+                </div>
+                <ul>
+                    <li>Monthly price: Rs 250</li>
+                    <li>Video and sound quality: Fair</li>
+                    <li>Resolution: 480p</li>
+                    <li>Supported devices: Mobile phone, tablet</li>
+                    <li>Devices you can watch at the same time: 1</li>
+                    <li>Download devices: 1</li>
+                </ul>
+            </div>
+            <div class="plan" onclick="selectPlan(this, 'Basic', 450)">
+                <div class="plan-header">
+                    <h2>Basic<br><span style="font-size: 12px;">720p</span></h2>
+                </div>
+                <ul>
+                    <li>Monthly price: Rs 450</li>
+                    <li>Video and sound quality: Good</li>
+                    <li>Resolution: 720p</li>
+                    <li>Supported devices: TV, computer, mobile phone, tablet</li>
+                    <li>Devices you can watch at the same time: 1</li>
+                    <li>Download devices: 1</li>
+                </ul>
+            </div>
+            <div class="plan" onclick="selectPlan(this, 'Standard', 800)">
+                <div class="plan-header">
+                    <h2>Standard<br><span style="font-size: 12px;">1080p</span></h2>
+                </div>
+                <ul>
+                    <li>Monthly price: Rs 800</li>
+                    <li>Video and sound quality: Great</li>
+                    <li>Resolution: 1080p (Full HD)</li>
+                    <li>Supported devices: TV, computer, mobile phone, tablet</li>
+                    <li>Devices you can watch at the same time: 2</li>
+                    <li>Download devices: 2</li>
+                </ul>
+            </div>
+            <div class="plan" onclick="selectPlan(this, 'Premium', 1100)">
+                <div class="plan-header">
+                    <h2>Premium<br><span style="font-size: 12px;">4K + HDR</span></h2>
+                    <span class="most-popular">Most Popular</span>
+                </div>
+                <ul>
+                    <li>Monthly price: Rs 1100</li>
+                    <li>Video and sound quality: Best</li>
+                    <li>Resolution: 4K (Ultra HD) + HDR</li>
+                    <li>Supported devices: TV, computer, mobile phone, tablet</li>
+                    <li>Devices you can watch at the same time: 4</li>
+                    <li>Download devices: 6</li>
+                </ul>
+            </div>
+        </div>
+        <button class="next-button" onclick="proceed()">Next</button>
+        <footer>
+            <p>HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability subject to internet service. Not all content is available in all resolutions.</p>
+        </footer>
+    </main>
+    <script>
+        function selectPlan(planElement, planName, price) {
+            document.querySelectorAll('.plan').forEach(p => p.classList.remove('selected'));
+            planElement.classList.add('selected');
+            planElement.dataset.planName = planName; 
+            planElement.dataset.price = price; 
+        }       
+        function proceed() {
+            const selectedPlan = document.querySelector('.plan.selected');
+            if (selectedPlan) {
+                const planName = selectedPlan.dataset.planName;
+                const price = selectedPlan.dataset.price;
+                window.location.href = `signup_final.html?plan=${encodeURIComponent(planName)}&price=${encodeURIComponent(price)}`;
+            } else {
+                alert("Please select a plan to proceed.");
+            }
+        }
+    </script>
+</body>
+</html>

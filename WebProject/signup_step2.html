@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        header img {
+            height: 40px;
+        }
+
+        header a {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        main h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        main p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        main input[type="email"],
+        main input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        main input:invalid {
+            border-color: red;
+        }
+
+        main input:valid {
+            border-color: green;
+        }
+
+        main label {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        main label input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        main button {
+            background-color: #e50914;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.5;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        main button.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png">
+        <a href="signin.html">Sign In</a>
+    </header>
+
+    <main>
+        <p style="color: #999; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">Step <b>1</b> of <b>3</b></p>
+        <h1>Create a password to start your membership</h1>
+        <p>Just a few more steps and you're done!<br>We hate paperwork, too.</p>
+        
+        <!-- Form submission to process_signup.php -->
+        <form action="first.php" method="POST">
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="password" name="password" id="password" placeholder="Add a password" required>
+            
+            <label>
+                <input type="checkbox" id="checkbox">
+                Please do not email me Netflix special offers.
+            </label>
+            
+            <button id="nextButton" type="submit" disabled>Next</button>
+        </form>
+    </main>
+
+    <script>
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const checkbox = document.getElementById("checkbox");
+        const submitButton = document.getElementById("nextButton");
+
+        function validateForm() {
+            const isEmailValid = emailInput.validity.valid;
+            const isPasswordValid = passwordInput.value.length >= 6;
+            const isCheckboxChecked = checkbox.checked;
+
+            submitButton.disabled = !(isEmailValid && isPasswordValid && isCheckboxChecked);
+            submitButton.classList.toggle("active", isEmailValid && isPasswordValid && isCheckboxChecked);
+        }
+
+        emailInput.addEventListener("input", validateForm);
+        passwordInput.addEventListener("input", validateForm);
+        checkbox.addEventListener("change", validateForm);
+    </script>
+</body>
+</html>

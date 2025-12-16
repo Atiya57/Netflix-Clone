@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f8f8f8;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        width: 100%;
+        border-bottom: 1px solid #e5e5e5;
+        box-sizing: border-box;
+    }
+
+    header img {
+        height: 40px;
+    }
+
+    .container {
+      width: 400px;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      color: #e50914;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .checkbox-container input {
+      margin-right: 10px;
+    }
+
+    .price-section {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    button {
+      background-color: #e50914;
+      color: #fff;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #d40813;
+    }
+
+    .terms {
+      font-size: 12px;
+      margin-top: 10px;
+      color: #999;
+    }
+
+    .credit-logos img {
+      height: 20px;
+      margin-right: 5px;
+    }
+
+    #loading {
+      display: none;
+      text-align: center;
+      margin-top: 10px;
+      color: #666;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center; 
+      gap: 8px; 
+    }
+
+    .checkbox-container input {
+      margin: 0; 
+    }
+
+    .checkbox-container label {
+      white-space: nowrap; 
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 90%;
+        padding: 15px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header img {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Netflix Logo">
+        <a href="index.html">Sign Out</a>
+    </header>
+
+  <div class="container">
+    <h1>Set up your <span>credit or debit</span> card</h1>
+    <div class="credit-logos">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg" alt="Mastercard">
+    </div>
+    <br>
+    <form id="paymentForm">
+      <div class="form-group">
+        <label for="cardNumber">Card number</label>
+        <input type="text" id="cardNumber" placeholder="Enter your 16 digit card number" required aria-label="Card number">
+      </div>
+      <div class="form-group">
+        <label for="expiry">Expiration date</label>
+        <input type="text" id="expiry" placeholder="MM/YY" required pattern="\d{2}/\d{2}" aria-label="Expiration date">
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" placeholder="3 digits CVV" required pattern="\d{3}" aria-label="CVV">
+      </div>
+      <div class="form-group">
+        <label for="name">Name on card</label>
+        <input type="text" id="name" placeholder="Name on card" required aria-label="Name on card">
+      </div>
+      <div class="form-group">
+        <label for="planSelection">Select Plan</label>
+        <select id="planSelection" aria-label="Select Plan">
+          <option value="250" data-plan="Mobile">Rs 250/month Mobile</option>
+          <option value="450" data-plan="Basic">Rs 450/month Basic</option>
+          <option value="800" data-plan="Standard">Rs 800/month Standard</option>
+          <option value="1100" data-plan="Premium" selected>Rs 1100/month Premium</option>
+        </select>
+      </div>      
+      <div class="checkbox-container">
+        <input type="checkbox" id="agree" required>
+        <label for="agree">I agree to the <a href="#" target="_blank">Terms of Use</a> and <a href="#" target="_blank">Privacy Statement</a></label>
+      </div>
+      <button type="submit" id="submitButton">Start Membership</button>
+      <div id="loading">Processing...</div>
+    </form>
+    <p class="terms">
+      Your payments will be processed internationally. Additional bank fees may apply.
+    </p>
+  </div>
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission by default
+  
+      const cardNumberInput = document.getElementById('cardNumber');
+      const loading = document.getElementById('loading');
+      const correctCardNumber = "0123 4356 3647 2822";
+  
+      // Check if the entered card number matches the correct one
+      if (cardNumberInput.value.trim() === correctCardNumber) {
+        loading.style.display = 'block'; 
+  
+        // Simulate processing delay and redirect
+        setTimeout(function() {
+          window.location.href = 'main.html';
+        }, 2000);
+      } else {
+        alert('Invalid card number. Please enter the correct card number: 0123 4356 3647 2822');
+        cardNumberInput.focus(); 
+      }
+    });
+  </script>
+  
+  
+</body>
+</html>

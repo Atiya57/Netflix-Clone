@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix Movies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #141414;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e50914;
+      padding: 15px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: white;
+    }
+    #searchBar {
+      padding: 10px;
+      font-size: 14px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .movie {
+      text-align: center;
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 10px;
+      background-color: #1f1f1f;
+      transition: transform 0.3s;
+    }
+
+    .movie img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .movie:hover {
+      transform: scale(1.05);
+    }
+
+    .movie h2 {
+      font-size: 14px;
+      margin: 10px 0 0;
+    }
+    a {
+    text-decoration: none; 
+    color: inherit;
+    }
+    @media (max-width: 750px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .movie {
+        width: 90%;
+      }
+
+      .search-button {
+        font-size: 0.9rem;
+        padding: 6px 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 15px;
+      }
+
+      header a {
+        font-size: 0.9rem;
+      }
+
+      .movie {
+        width: 95%;
+      }
+
+      .search-button {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Netflix</h1>
+    <header>
+    <a href="index.html">Sign Out</a>
+    </header>
+    <input type="text" id="searchBar" placeholder="Search for a movie...">
+  </header>
+  
+  <div class="container">
+    <div class="movie-grid" id="movieGrid">  
+      <div class="movie">
+        <a href="movies.html?movie=bigmouth" target="_blank">
+        <img src="images/bigmouth.jpeg" alt="bigmouth">
+        <h2>Big Mouth</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=whyher" target="_blank">
+        <img src="images/whyher.jpeg" alt="Why Her">
+        <h2>Why Her</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=truebeauty" target="_blank">
+        <img src="images/truebeauty.jpeg" alt="truebeauty">
+        <h2>True Beauty</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=cuteprogrammer" target="_blank">
+        <img src="images/cuteprogrammer.jpeg" alt="cuteprogrammer">
+        <h2>Cute Programmer</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=pyhoms" target="_blank">
+        <img src="images/pyhoms.jpeg" alt="pyhoms">
+        <h2>Put Your Head On My Shoulders</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=vincenzo" target="_blank">
+        <img src="images/vincenzo.jpeg" alt="Vincenzo">
+        <h2>Vincenzo</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=goahead" target="_blank">
+        <img src="images/goahead.jpeg" alt="goahead">
+        <h2>Go Ahead</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=fallingintoyoursmile" target="_blank">
+        <img src="images/fallingintoyoursmile.jpeg" alt="fallingintoyoursmile">
+        <h2>Falling into your smile</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=dofsuns" target="_blank">
+        <img src="images/dofsuns.jpeg" alt="dofsuns">
+        <h2>Descendents Of The Sun</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=businessproposal" target="_blank">
+        <img src="images/businessproposal.jpeg" alt="businessproposal">
+        <h2>Business Proposal</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=queenoftears" target="_blank">
+        <img src="images/queenoftears.jpeg" alt="queenoftears">
+        <h2>Queen Of Tears</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=venom" target="_blank">
+        <img src="images/venom.jpeg" alt="venom">
+        <h2>Venom</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=wonderwoman" target="_blank">
+        <img src="images/wonderwoman.jpeg" alt="wonderwoman">
+        <h2>Wonder Woman</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=fastnfurious" target="_blank">
+        <img src="images/fastnfurious.jpeg" alt="fast and furious">
+        <h2>Fast and Furious</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=despicable_me" target="_blank">
+        <img src="images/despicable_me.jpeg" alt="despicable me">
+        <h2>Despicable Me</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=minnions" target="_blank">
+        <img src="images/minnions.jpeg" alt="The Minnions">
+        <h2>The Minnions</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=teenbahadur" target="_blank">
+        <img src="images/3bahadur.jpeg" alt="3bahadur">
+        <h2>3 Bahadur</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=frozen" target="_blank">
+        <img src="images/frozen.jpeg" alt="Fozen">
+        <h2>The Frozen</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=tinkerbell" target="_blank">
+        <img src="images/tinkerbell.jpeg" alt="tinkerbell">
+        <h2>Tinkerbell</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=madagascar" target="_blank">
+        <img src="images/madagascar.jpeg" alt="madagascar">
+        <h2>Madagascar</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=kungfupanda" target="_blank">
+        <img src="images/kungfupanda.jpeg" alt="kungfupanda">
+        <h2>Kung Fu Panda</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=tinkerbell" target="_blank">
+        <img src="images/tinkerbell.jpeg" alt="tinkerbell">
+        <h2>Tinkerbell</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=madagascar" target="_blank">
+        <img src="images/madagascar.jpeg" alt="madagascar">
+        <h2>Madagascar</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=kungfupanda" target="_blank">
+        <img src="images/kungfupanda.jpeg" alt="kungfupanda">
+        <h2>Kung Fu Panda</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=babydriver" target="_blank">
+        <img src="images/babydriver.jpeg" alt="babydriver">
+        <h2>Babydriver</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=motupatlu" target="_blank">
+        <img src="images/motupatlu.jpeg" alt="motupatlu">
+        <h2>Motu Patlu</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=adamproject" target="_blank">
+        <img src="images/adamproject.jpeg" alt="adamproject">
+        <h2>The Adam Project</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=heartofstone" target="_blank">
+        <img src="images/heartofstone.jpeg" alt="heartofstone">
+        <h2>Heart Of Stone</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=darkknight" target="_blank">
+        <img src="images/darkknight.jpeg" alt="The Dark Knight">
+        <h2>The Dark Knight</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=joker" target="_blank">
+        <img src="images/joker.jpeg" alt="Joker">
+        <h2>Joker</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=mazerunner" target="_blank">
+        <img src="images/mazerunner.jpeg" alt="mazerunner">
+        <h2>The Maze Runner</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=Teenwolf" target="_blank">
+        <img src="images/Teenwolf.jpeg" alt="The Teenwolf">
+        <h2>The Teenwolf</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=thehundred" target="_blank">
+        <img src="images/thehundred.jpeg" alt="The Hundred">
+        <h2>The Hundred</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=flash" target="_blank">
+        <img src="images/flash.jpeg" alt="Flash">
+        <h2>The Flash</h2></a>
+      </div>
+        <div class="movie">
+            <a href="movies.html?movie=inception" target="_blank">
+        <img src="images/inception.jpeg" alt="Inception">
+        <h2>Inception</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=matrix" target="_blank">
+        <img src="images/matrix.jpeg" alt="The Matrix">
+        <h2>The Matrix</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=interstellar" target="_blank">
+        <img src="images/interstellar.jpeg" alt="Interstellar">
+        <h2>Interstellar</h2></a>
+      </div>
+      <div class="movie">
+        <a href="movies.html?movie=avengers" target="_blank">
+        <img src="images/avengers.jpeg" alt="Avengers: Endgame">
+        <h2>Avengers: Endgame</h2></a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for searching movies
+    const searchBar = document.getElementById('searchBar');
+    const movieGrid = document.getElementById('movieGrid');
+    const movies = movieGrid.getElementsByClassName('movie');
+
+    searchBar.addEventListener('keyup', function() {
+      const query = searchBar.value.toLowerCase();
+
+      for (let movie of movies) {
+        const title = movie.getElementsByTagName('h2')[0].innerText.toLowerCase();
+        if (title.includes(query)) {
+          movie.style.display = '';
+        } else {
+          movie.style.display = 'none';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
